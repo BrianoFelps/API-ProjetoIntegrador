@@ -1,23 +1,18 @@
 // As chaves servem a importar a constante do arquivo
 import { db } from '../database/db.js';
+import * as EmojiMenuModel from '../models/EmojiMenu.js';
 
 // O underline é o endpoint, esperando informação, sem necessidade do corpo
 // aqui a requisição não precisa de processamento, por isso é omitida
-export const getEmojiMenu = (_, res) => {
-    const sql = "select * from emojimenu";
-
-    db.query(sql, (err, data) => {
-        if(err){
-            console.log("Erro ao processar a requisição!")
-            // Status code, retorna uma coisa se der erro padronizando (tipo erro 404 do google)
-            return res.status(500).json(err);
-        } else {
-            console.log(`Dados dos EmojiMenu's obtidos adequadamente!`);
-            return res.status(200).json(data);
-            // 500 expressa erro, já o 200, sucesso.
-        }
-    });
-}
+export const getAllEmojiMenus = async (_, res) => {
+    try {
+        const emojiMenus = await EmojiMenuModel.getAllEmojiMenus();
+        res.status(200).json(emojiMenus);
+      } catch (error) {
+        console.error('Erro ao obter todos os EmojiMenus:', error);
+        res.status(500).json({ error: 'Erro ao obter os EmojiMenus' });
+      }
+    };
 
 export const addEmojiMenu = (req, res) => {
     const sql = "insert into emojimenu (id_emoji) values (?)"
@@ -69,3 +64,19 @@ export const deleteEmojiMenu = (req, res) => {
         }
     });
 }
+
+// Função para buscar um EmojiMenu pelo id
+export const getEmojiMenuById = async (req, res) => {
+    const { id } = req.params;
+    try {
+      const emojiMenu = await EmojiMenuModel.getEmojiMenuById(id);
+      if (!emojiMenu) {
+        res.status(404).json({ error: 'EmojiMenu não encontrado' });
+        return;
+      }
+      res.status(200).json(emojiMenu);
+    } catch (error) {
+      console.error('Erro ao obter o EmojiMenu pelo ID:', error);
+      res.status(500).json({ error: 'Erro ao obter o EmojiMenu pelo ID' });
+    }
+  };
