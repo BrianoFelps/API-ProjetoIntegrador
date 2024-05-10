@@ -1,7 +1,7 @@
 // Definir rotas
 import express from 'express';
 import { getPages, addPages, updatePages, deletePages } from '../controllers/PagesController.js';
-import { getAllEmojiMenus, addEmojiMenu, updateEmojiMenu, deleteEmojiMenu, getEmojiMenuById } from '../controllers/EmojiMenuController.js';
+import { getAllEmojiMenus, addEmojiMenu, updateEmojiMenu, deleteEmojiMenu, getEmojiMenuById, getEmojiByMenuId } from '../controllers/EmojiMenuController.js';
 import { getElements, addElement, updateElement, deleteElement } from '../controllers/ElementsController.js';
 import { getElementsP, addElementP, updateElementP, deleteElementP } from '../controllers/ElmPropertiesController.js';
 import { getUsuarios, addUsuario, updateUsuario, deleteUsuario } from '../controllers/UsuarioController.js';
@@ -23,6 +23,7 @@ router.post("/emojiMenu", addEmojiMenu);
 router.put("/emojiMenu", updateEmojiMenu);
 router.delete("/emojiMenu", deleteEmojiMenu);
 router.get("/emojiMenu/ID/:id", getEmojiMenuById);
+router.get("/emojiMenu/emoji", getEmojiByMenuId)
 
 router.get("/Elm", getElements);
 router.post("/Elm", addElement);
