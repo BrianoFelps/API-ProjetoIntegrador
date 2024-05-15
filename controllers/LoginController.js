@@ -3,6 +3,7 @@ import { db } from '../database/db.js';
 // Verificação
 export const verificarlogin = (req, res) => {
     const { email, senha } = req.body;
+    
 
     const sql = 'select * from usuario where email = ? and senha = ?';
 
