@@ -1,9 +1,9 @@
 import db from '../database/db.js';
 
 // Função para obter todos os EmojiMenus do banco de dados
-export const getAllEmojiMenus = () => {
+export const getAllElements = () => {
   return new Promise((resolve, reject) => {
-    const sql = 'SELECT * FROM emojimenu';
+    const sql = 'SELECT * FROM elements';
     db.query(sql, (error, results) => {
       if (error) {
         reject(error);
@@ -15,9 +15,9 @@ export const getAllEmojiMenus = () => {
 };
 
 // Função para obter um EmojiMenu pelo ID
-export const getEmojiMenuById = (id) => {
+export const getElementsById = (id) => {
   return new Promise((resolve, reject) => {
-    const sql = 'SELECT * FROM emojimenu WHERE id = ?';
+    const sql = 'SELECT * FROM elements WHERE id = ?';
     db.query(sql, [id], (error, results) => {
       if (error) {
         reject(error);
@@ -32,9 +32,9 @@ export const getEmojiMenuById = (id) => {
   });
 };
 
-export const getEmojiByMenuId = async () => {
+export const getElementsWProperties = async () => {
   return new Promise((resolve, reject) => {
-    const sql = 'SELECT em.id as id, e.emoji as emoji FROM emojimenu em JOIN emojis e ON em.id_emoji = e.id order by em.id';
+    const sql = 'SELECT e.id as id, ep.id as property_id, ep.name as category, ep.type as ancestry, e.value as value FROM elements e JOIN elmproperties ep ON e.id_property = ep.id order by e.id';
     db.query(sql, (error, results) => {
       if (error) {
         reject(error);

@@ -81,7 +81,7 @@ export const getEmojiMenuById = async (req, res) => {
     }
   };
 
-  export const getEmojiByMenuId = async (req, res) =>{
+  export const getEmojiByMenuId = async (_, res) =>{
     try{
         const emojis = await EmojiMenuModel.getEmojiByMenuId();
         if(!emojis){

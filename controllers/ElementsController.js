@@ -1,20 +1,16 @@
 import { db } from '../database/db.js';
+import * as ElementsModel  from '../models/Elements.js'
 
-export const getElements = (_, res) => {
-    const sql = "select * from elements";
 
-    db.query(sql, (err, data) => {
-        if(err){
-            console.log("Erro ao processar a requisição!")
-            // Status code, retorna uma coisa se der erro padronizando (tipo erro 404 do google)
-            return res.status(500).json(err);
-        } else {
-            console.log(`Dados dos Element's obtidos adequadamente!`);
-            return res.status(200).json(data);
-            // 500 expressa erro, já o 200, sucesso.
-        }
-    });
-}
+export const getAllElements = async (_, res) => {
+    try {
+        const Elements = await ElementsModel.getAllElements();
+        res.status(200).json(Elements);
+      } catch (error) {
+        console.error('Erro ao obter todos os Elementos:', error);
+        res.status(500).json({ error: 'Erro ao obter os Elementos' });
+      }
+    };
 
 export const addElement = (req, res) => {
     const sql = "insert into elements (id_property, value) values (?, ?)"
@@ -35,7 +31,7 @@ export const addElement = (req, res) => {
 export const updateElement = (req, res) => {
     const sql = "UPDATE elements SET id_property = ?, value = ? WHERE id = ?";
 
-    const { id, id_property, value } = req.body;
+    const { id_property, value, id } = req.body;
     
     db.query(sql, [id_property, value, id], (err, data) => {
         if(err){
@@ -65,4 +61,20 @@ export const deleteElement = (req, res) => {
             // 500 expressa erro, 200 sucesso.
         }
     });
+}
+
+export const getElementsWProperties = async (_, res) => {
+    try{
+        const Elements = await ElementsModel.getElementsWProperties();
+        if(!Elements){
+            res.status(404).json({ error: `Erro ao obter os elementos com as propriedades`});
+            return;
+        }
+        
+        res.status(200).json(Elements);    
+
+        } catch (error) {
+            console.error('Erro ao obter os elementos com as propriedades:', error);
+            res.status(500).json({ error: 'Erro ao obter os elementos com as propriedades' });
+        }
 }

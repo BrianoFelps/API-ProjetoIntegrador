@@ -2,7 +2,7 @@
 import express from 'express';
 import { getPages, addPages, updatePages, deletePages } from '../controllers/PagesController.js';
 import { getAllEmojiMenus, addEmojiMenu, updateEmojiMenu, deleteEmojiMenu, getEmojiMenuById, getEmojiByMenuId } from '../controllers/EmojiMenuController.js';
-import { getElements, addElement, updateElement, deleteElement } from '../controllers/ElementsController.js';
+import { getAllElements, getElementsWProperties, addElement, updateElement, deleteElement } from '../controllers/ElementsController.js';
 import { getElementsP, addElementP, updateElementP, deleteElementP } from '../controllers/ElmPropertiesController.js';
 import { getUsuarios, addUsuario, updateUsuario, deleteUsuario } from '../controllers/UsuarioController.js';
 import { getAllEmoji, getEmojiById } from '../controllers/EmojisController.js';
@@ -25,7 +25,8 @@ router.delete("/emojiMenu", deleteEmojiMenu);
 router.get("/emojiMenu/ID/:id", getEmojiMenuById);
 router.get("/emojiMenu/emoji", getEmojiByMenuId)
 
-router.get("/Elm", getElements);
+router.get("/Elm", getAllElements);
+router.get("/Elm/props", getElementsWProperties);
 router.post("/Elm", addElement);
 router.put("/Elm", updateElement);
 router.delete("/Elm", deleteElement);
