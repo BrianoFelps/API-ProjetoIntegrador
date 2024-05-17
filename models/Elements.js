@@ -44,3 +44,29 @@ export const getElementsWProperties = async () => {
     });
   });
 };
+
+export const getCardElements = async () => {
+  return new Promise((resolve, reject) => {
+    const sql = 'SELECT * FROM elements where id >= 4';
+    db.query(sql, (error, results) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+      resolve(results); // Retorna todos os resultados encontrados
+    });
+  });
+}
+
+export const getInputCardElements = async () =>{
+  return new Promise((resolve, reject) => {
+    const sql = 'SELECT * FROM elements where id >= 9';
+    db.query(sql, (error, results) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+      resolve(results); // Retorna todos os resultados encontrados
+    });
+  })
+}

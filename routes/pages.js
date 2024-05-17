@@ -1,8 +1,8 @@
 // Definir rotas
 import express from 'express';
 import { getPages, addPages, updatePages, deletePages } from '../controllers/PagesController.js';
-import { getAllEmojiMenus, addEmojiMenu, updateEmojiMenu, deleteEmojiMenu, getEmojiMenuById, getEmojiByMenuId } from '../controllers/EmojiMenuController.js';
-import { getAllElements, getElementsWProperties, addElement, updateElement, deleteElement } from '../controllers/ElementsController.js';
+import { getAllEmojiMenus, addEmojiMenu, updateEmojiMenu, deleteEmojiMenu, getEmojiMenuById, getEmojiByMenuId, getEmojiByIdMenu } from '../controllers/EmojiMenuController.js';
+import { getAllElements, getElementsWProperties, getCardElements, getElementsById, getInputCardElements, addElement, updateElement, deleteElement } from '../controllers/ElementsController.js';
 import { getElementsP, addElementP, updateElementP, deleteElementP } from '../controllers/ElmPropertiesController.js';
 import { getUsuarios, addUsuario, updateUsuario, deleteUsuario } from '../controllers/UsuarioController.js';
 import { getAllEmoji, getEmojiById } from '../controllers/EmojisController.js';
@@ -23,10 +23,14 @@ router.post("/emojiMenu", addEmojiMenu);
 router.put("/emojiMenu", updateEmojiMenu);
 router.delete("/emojiMenu", deleteEmojiMenu);
 router.get("/emojiMenu/ID/:id", getEmojiMenuById);
-router.get("/emojiMenu/emoji", getEmojiByMenuId)
+router.get("/emojiMenu/emoji", getEmojiByMenuId);
+router.get("/emojiMenu/IDMENU/:id", getEmojiByIdMenu);
 
 router.get("/Elm", getAllElements);
 router.get("/Elm/props", getElementsWProperties);
+router.get("/Elm/cards", getCardElements);
+router.get("/Elm/IC", getInputCardElements);
+router.get("/Elm/:id", getElementsById);
 router.post("/Elm", addElement);
 router.put("/Elm", updateElement);
 router.delete("/Elm", deleteElement);

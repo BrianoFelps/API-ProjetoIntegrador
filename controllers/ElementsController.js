@@ -78,3 +78,51 @@ export const getElementsWProperties = async (_, res) => {
             res.status(500).json({ error: 'Erro ao obter os elementos com as propriedades' });
         }
 }
+
+export const getCardElements = async (_, res) => {
+    try{
+        const Elements = await ElementsModel.getCardElements();
+        if(!Elements){
+            res.status(404).json({ error: `Erro ao obter os elementos CARD`});
+            return;
+        }
+        
+        res.status(200).json(Elements);    
+
+        } catch (error) {
+            console.error('Erro ao obter os elementos CARD:', error);
+            res.status(500).json({ error: 'Erro ao obter os elementos CARD' });
+        }
+}
+
+export const getElementsById = async (_, res) => {
+    try{
+        const Elements = await ElementsModel.getElementsById();
+        if(!Elements){
+            res.status(404).json({ error: `Erro ao obter os elementos CARD`});
+            return;
+        }
+        
+        res.status(200).json(Elements);    
+
+        } catch (error) {
+            console.error('Erro ao obter os elementos por id:', error);
+            res.status(500).json({ error: 'Erro ao obter os elementos por id' });
+        }
+}
+
+export const getInputCardElements = async (_, res) => {
+    try{
+        const Elements = await ElementsModel.getInputCardElements();
+        if(!Elements){
+            res.status(404).json({ error: `Erro ao obter os elementos Tooltip`});
+            return;
+        }
+
+        res.status(200).json(Elements);
+
+        } catch (error) {
+            console.error('Erro ao obter os Inputs com card:', error);
+            res.status(500).json({ error: 'Erro ao obter os Inputs com card' });
+        }
+}

@@ -44,3 +44,37 @@ export const getEmojiByMenuId = async () => {
     });
   });
 };
+
+// export const getEmojiByIdmenu = async (id) => {
+//   return new Promise((resolve, reject) => {
+//     const sql = 'SELECT em.id as id, e.emoji as emoji FROM emojimenu em JOIN emojis e ON em.id_emoji = e.id WHERE em.id = ?';
+//     db.query(sql, [id], (error, results) => {
+//       if (error) {
+//         reject(error);
+//         return;
+//       }
+//       if (results.length === 0) {
+//         resolve(null); // EmojiMenu não encontrado
+//         return;
+//       }
+//       resolve(results[0]);
+//     });
+//   });
+// }
+
+export const getEmojiByIdMenu = (id) => {
+  return new Promise((resolve, reject) => {
+    const sql = 'SELECT em.id as id, e.emoji as emoji FROM emojimenu em JOIN emojis e ON em.id_emoji = e.id WHERE em.id = ?';
+    db.query(sql, [id], (error, results) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+      if (results.length === 0) {
+        resolve(null); // EmojiMenu não encontrado
+        return;
+      }
+      resolve(results[0]);
+    });
+  });
+};
