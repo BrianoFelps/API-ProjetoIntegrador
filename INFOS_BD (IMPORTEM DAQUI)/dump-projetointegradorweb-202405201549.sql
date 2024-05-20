@@ -89,7 +89,7 @@ CREATE TABLE `emojimenu` (
 
 LOCK TABLES `emojimenu` WRITE;
 /*!40000 ALTER TABLE `emojimenu` DISABLE KEYS */;
-INSERT INTO `emojimenu` VALUES (5,1),(7,1),(12,1),(16,1),(8,2),(11,2),(2,3),(4,3),(14,3),(15,3),(13,4),(1,5),(3,5),(6,5),(9,5),(10,5);
+INSERT INTO `emojimenu` VALUES (5,1),(16,1),(6,5),(1,6),(2,7),(3,8),(4,9),(7,10),(12,11),(10,12),(11,13),(8,14),(9,15),(13,16),(14,17),(15,18);
 /*!40000 ALTER TABLE `emojimenu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +114,7 @@ CREATE TABLE `emojis` (
 
 LOCK TABLES `emojis` WRITE;
 /*!40000 ALTER TABLE `emojis` DISABLE KEYS */;
-INSERT INTO `emojis` VALUES (1,'Sorridente fofo','😊'),(2,'Rindo muito','😂'),(3,'Amoroso','😍'),(4,'Bêbado','🥴'),(5,'Sorridente','😁');
+INSERT INTO `emojis` VALUES (1,'Sorridente fofo','😊'),(2,'Rindo muito','😂'),(3,'Amoroso','😍'),(4,'Bêbado','🥴'),(5,'Sorridente','😁'),(6,'Cruz latina','✝️'),(7,'Igreja','⛪'),(8,'Moai','🗿'),(9,'Rosto sorridente com aréola','😇'),(10,'Lista','📋'),(11,'Saco de dinheiro','💰'),(12,'Nota de dólar','💵'),(13,'Carrinho de compras','🛒'),(14,'Calendário','📅'),(15,'Calendário espiral','🗓️'),(16,'Avião','✈️'),(17,'Planta nascente','🌱'),(18,'Parede de tijolos','🧱');
 /*!40000 ALTER TABLE `emojis` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -228,6 +228,10 @@ LOCK TABLES `usuario` WRITE;
 UNLOCK TABLES;
 
 --
+-- Dumping events for database 'projetointegradorweb'
+--
+
+--
 -- Dumping routines for database 'projetointegradorweb'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -240,4 +244,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-20 14:28:22
+-- Dump completed on 2024-05-20 15:49:51
