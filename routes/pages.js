@@ -2,7 +2,7 @@
 import express from 'express';
 import { getPages, addPages, updatePages, deletePages } from '../controllers/PagesController.js';
 import { getAllEmojiMenus, addEmojiMenu, updateEmojiMenu, deleteEmojiMenu, getEmojiMenuById, getEmojiByMenuId, getEmojiByIdMenu } from '../controllers/EmojiMenuController.js';
-import { getAllElements, getElementsWProperties, getCardElements, getElementsById, getInputCardElements, addElement, updateElement, deleteElement } from '../controllers/ElementsController.js';
+import { getAllElements, getElementsWProperties, getCardElements, getElementsById, getInputCardElements, getInputWIdeaElements, addElement, updateElement, deleteElement } from '../controllers/ElementsController.js';
 import { getElementsP, addElementP, updateElementP, deleteElementP } from '../controllers/ElmPropertiesController.js';
 import { getUsuarios, addUsuario, updateUsuario, deleteUsuario } from '../controllers/UsuarioController.js';
 import { getAllEmoji, getEmojiById } from '../controllers/EmojisController.js';
@@ -30,6 +30,7 @@ router.get("/Elm", getAllElements);
 router.get("/Elm/props", getElementsWProperties);
 router.get("/Elm/cards", getCardElements);
 router.get("/Elm/IC", getInputCardElements);
+router.get("/Elm/WI", getInputWIdeaElements);
 router.get("/Elm/:id", getElementsById);
 router.post("/Elm", addElement);
 router.put("/Elm", updateElement);

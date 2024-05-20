@@ -29,7 +29,7 @@ CREATE TABLE `elements` (
   PRIMARY KEY (`id`),
   KEY `id_property` (`id_property`),
   CONSTRAINT `elements_ibfk_1` FOREIGN KEY (`id_property`) REFERENCES `elmproperties` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `elements` (
 
 LOCK TABLES `elements` WRITE;
 /*!40000 ALTER TABLE `elements` DISABLE KEYS */;
-INSERT INTO `elements` VALUES (1,1,'a'),(2,2,'Oba'),(3,3,'Termineiiiiiiiiiiiiiiiiii');
+INSERT INTO `elements` VALUES (1,1,'a'),(2,2,'Salmos 91'),(3,3,'1 Aquele que habita no esconderijo do Altíssimo, à sombra do Onipotente descansará.\n2 Direi do Senhor: Ele é o meu Deus, o meu refúgio, a minha fortaleza, e nele confiarei.\n3 Porque ele te livrará do laço do passarinheiro, e da peste perniciosa.\n4 Ele te cobrirá com as suas penas, e debaixo das suas asas te confiarás; a sua verdade será o teu escudo e broquel.\n5 Não terás medo do terror de noite nem da seta que voa de dia.\n6 Nem da peste que anda na escuridão, nem da mortandade que assola ao meio-dia.\n7 Mil cairão ao teu lado, e dez mil à tua direita, mas não chegará a ti.'),(4,4,'RELIGIÃO'),(5,4,'MASCULINIDADE'),(6,4,'VIRTUDES CATÓLICAS'),(7,4,'FILOSOFIA'),(8,4,'positividade'),(9,5,'Lista de afazeres'),(10,5,'Rotina diária'),(11,5,'Metas mensais'),(12,5,'Orçamento'),(13,5,'Lista de compras'),(14,5,'Metas financeiras'),(15,5,'Objetivos de longo prazo'),(16,5,'Objetivos semestrais'),(17,5,'Áreas da vida'),(18,6,'DIA A DIA'),(19,6,'FINANÇAS'),(20,6,'VIDA');
 /*!40000 ALTER TABLE `elements` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,7 +54,7 @@ CREATE TABLE `elmproperties` (
   `name` varchar(50) NOT NULL,
   `type` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +63,7 @@ CREATE TABLE `elmproperties` (
 
 LOCK TABLES `elmproperties` WRITE;
 /*!40000 ALTER TABLE `elmproperties` DISABLE KEYS */;
-INSERT INTO `elmproperties` VALUES (1,'Título','Pai'),(2,'InputTitle','Pai'),(3,'InputText','Pai');
+INSERT INTO `elmproperties` VALUES (1,'Título','Pai'),(2,'InputTitle','Pai'),(3,'InputText','Pai'),(4,'Card','Pai'),(5,'InputWCard','Pai'),(6,'InputWriteIdea','Pai');
 /*!40000 ALTER TABLE `elmproperties` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,7 +89,7 @@ CREATE TABLE `emojimenu` (
 
 LOCK TABLES `emojimenu` WRITE;
 /*!40000 ALTER TABLE `emojimenu` DISABLE KEYS */;
-INSERT INTO `emojimenu` VALUES (5,1),(6,1),(7,1),(12,1),(16,1),(4,2),(8,2),(11,2),(14,3),(15,3),(13,4),(1,5),(2,5),(3,5),(9,5),(10,5);
+INSERT INTO `emojimenu` VALUES (5,1),(7,1),(12,1),(16,1),(8,2),(11,2),(2,3),(4,3),(14,3),(15,3),(13,4),(1,5),(3,5),(6,5),(9,5),(10,5);
 /*!40000 ALTER TABLE `emojimenu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,4 +240,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-15 15:32:22
+-- Dump completed on 2024-05-20 14:28:22

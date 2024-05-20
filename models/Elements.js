@@ -70,3 +70,16 @@ export const getInputCardElements = async () =>{
     });
   })
 }
+
+export const getInputWIdeaElements = async () =>{
+  return new Promise((resolve, reject) => {
+    const sql = 'SELECT * FROM elements where id >= 18';
+    db.query(sql, (error, results) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+      resolve(results); // Retorna todos os resultados encontrados
+    });
+  })
+}
