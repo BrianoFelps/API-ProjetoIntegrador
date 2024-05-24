@@ -44,6 +44,22 @@ export const updateElement = (req, res) => {
     });
 }
 
+export const updateElementsWData = (req, res) => {
+    const sql = "UPDATE elements SET id_property = ?, value = ?, data = ? WHERE id = ?";
+
+    const { id_property, value, data, id } = req.body;
+    
+    db.query(sql, [id_property, value, data, id], (err, data) => {
+        if(err){
+            console.log("Erro ao processar a requisição!");
+            return res.status(500).json(err);
+        } else {
+            console.log(`Element alterado com sucesso!`)
+            return res.status(200).json(data);
+            }
+    });
+}
+
 export const deleteElement = (req, res) => {
     const sql = "delete from elements where id = ?";
 
@@ -143,3 +159,18 @@ export const getInputWIdeaElements = async (_, res) => {
         }
 }
 
+export const getFScards =  async (_, res) => {
+    try{
+        const Elements = await ElementsModel.getFScards();
+        if(!Elements){
+            res.status(404).json({ error: `Erro ao obter os elementos FSCard's`});
+            return;
+        }
+
+        res.status(200).json(Elements);
+
+        } catch (error) {
+            console.error('Erro ao obter os FSCard:', error);
+            res.status(500).json({ error: 'Erro ao obter os FSCard' });
+        }
+}

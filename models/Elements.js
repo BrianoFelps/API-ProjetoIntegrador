@@ -83,3 +83,16 @@ export const getInputWIdeaElements = async () =>{
     });
   })
 }
+
+export const getFScards = async () =>{
+  return new Promise((resolve, reject) => {
+    const sql = `SELECT id, id_property, value, DATE_FORMAT(data, '%Y-%m-%d') as data FROM elements where id >= 21`;
+    db.query(sql, (error, results) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+      resolve(results); // Retorna todos os resultados encontrados
+    });
+  })
+}
