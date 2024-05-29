@@ -26,10 +26,11 @@ CREATE TABLE `elements` (
   `id` int NOT NULL AUTO_INCREMENT,
   `id_property` int NOT NULL,
   `value` varchar(1000) DEFAULT NULL,
+  `data` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_property` (`id_property`),
   CONSTRAINT `elements_ibfk_1` FOREIGN KEY (`id_property`) REFERENCES `elmproperties` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +39,7 @@ CREATE TABLE `elements` (
 
 LOCK TABLES `elements` WRITE;
 /*!40000 ALTER TABLE `elements` DISABLE KEYS */;
-INSERT INTO `elements` VALUES (1,1,'a'),(2,2,'Salmos 91'),(3,3,'1 Aquele que habita no esconderijo do Altíssimo, à sombra do Onipotente descansará.\n2 Direi do Senhor: Ele é o meu Deus, o meu refúgio, a minha fortaleza, e nele confiarei.\n3 Porque ele te livrará do laço do passarinheiro, e da peste perniciosa.\n4 Ele te cobrirá com as suas penas, e debaixo das suas asas te confiarás; a sua verdade será o teu escudo e broquel.\n5 Não terás medo do terror de noite nem da seta que voa de dia.\n6 Nem da peste que anda na escuridão, nem da mortandade que assola ao meio-dia.\n7 Mil cairão ao teu lado, e dez mil à tua direita, mas não chegará a ti.'),(4,4,'RELIGIÃO'),(5,4,'MASCULINIDADE'),(6,4,'VIRTUDES CATÓLICAS'),(7,4,'FILOSOFIA'),(8,4,'positividade'),(9,5,'Lista de afazeres'),(10,5,'Rotina diária'),(11,5,'Metas mensais'),(12,5,'Orçamento'),(13,5,'Lista de compras'),(14,5,'Metas financeiras'),(15,5,'Objetivos de longo prazo'),(16,5,'Objetivos semestrais'),(17,5,'Áreas da vida'),(18,6,'DIA A DIA'),(19,6,'FINANÇAS'),(20,6,'VIDA');
+INSERT INTO `elements` VALUES (1,1,'a',NULL),(2,2,'Salmos 91',NULL),(3,3,'1 Aquele que habita no esconderijo do Altíssimo, à sombra do Onipotente descansará.\n2 Direi do Senhor: Ele é o meu Deus, o meu refúgio, a minha fortaleza, e nele confiarei.\n3 Porque ele te livrará do laço do passarinheiro, e da peste perniciosa.\n4 Ele te cobrirá com as suas penas, e debaixo das suas asas te confiarás; a sua verdade será o teu escudo e broquel.\n5 Não terás medo do terror de noite nem da seta que voa de dia.\n6 Nem da peste que anda na escuridão, nem da mortandade que assola ao meio-dia.\n7 Mil cairão ao teu lado, e dez mil à tua direita, mas não chegará a ti.',NULL),(4,4,'RELIGIÃO',NULL),(5,4,'MASCULINIDADE',NULL),(6,4,'VIRTUDES CATÓLICAS',NULL),(7,4,'FILOSOFIA',NULL),(8,4,'positividade',NULL),(9,5,'Lista de afazeres',NULL),(10,5,'Rotina diária',NULL),(11,5,'Metas mensais',NULL),(12,5,'Orçamento',NULL),(13,5,'Lista de compras',NULL),(14,5,'Metas financeiras',NULL),(15,5,'Objetivos de longo prazo',NULL),(16,5,'Objetivos semestrais',NULL),(17,5,'Áreas da vida',NULL),(18,6,'DIA A DIA',NULL),(19,6,'FINANÇAS',NULL),(20,6,'VIDA',NULL),(21,7,'Título\n\nTexto\n\nParágrafo\n\nImagem\n\netc.','2023-06-22'),(22,7,'TESTE 2','2005-09-28'),(23,7,'TESTE 3','2007-08-23'),(24,7,'TESTE 4','2027-07-21'),(25,7,'TESTE 5 ajf hdfoiuhdsakjflhsdakjfhdsakjflhadslkjnfhdsaklnflkjdsafkjhdkjlnfhajlfkjsafljkdsakjfdhkjfhdsalkjfhdsakjfhsakdhkfsd','2020-06-17');
 /*!40000 ALTER TABLE `elements` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,7 +55,7 @@ CREATE TABLE `elmproperties` (
   `name` varchar(50) NOT NULL,
   `type` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +64,7 @@ CREATE TABLE `elmproperties` (
 
 LOCK TABLES `elmproperties` WRITE;
 /*!40000 ALTER TABLE `elmproperties` DISABLE KEYS */;
-INSERT INTO `elmproperties` VALUES (1,'Título','Pai'),(2,'InputTitle','Pai'),(3,'InputText','Pai'),(4,'Card','Pai'),(5,'InputWCard','Pai'),(6,'InputWriteIdea','Pai');
+INSERT INTO `elmproperties` VALUES (1,'Título','Pai'),(2,'InputTitle','Pai'),(3,'InputText','Pai'),(4,'Card','Pai'),(5,'InputWCard','Pai'),(6,'InputWriteIdea','Pai'),(7,'FScard','Pai');
 /*!40000 ALTER TABLE `elmproperties` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,18 +178,13 @@ DROP TABLE IF EXISTS `pages`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pages` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `id_elements` int NOT NULL,
+  `name` varchar(50) NOT NULL,
   `id_usuario` int NOT NULL,
-  `id_emojimenu` int NOT NULL,
   `isFavorited` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_elements` (`id_elements`),
   KEY `id_usuario` (`id_usuario`),
-  KEY `id_emojimenu` (`id_emojimenu`),
-  CONSTRAINT `pages_ibfk_1` FOREIGN KEY (`id_elements`) REFERENCES `elements` (`id`),
-  CONSTRAINT `pages_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`),
-  CONSTRAINT `pages_ibfk_3` FOREIGN KEY (`id_emojimenu`) REFERENCES `emojimenu` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `pages_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -197,6 +193,7 @@ CREATE TABLE `pages` (
 
 LOCK TABLES `pages` WRITE;
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
+INSERT INTO `pages` VALUES (1,'Ponto de equilíbrio',1,1);
 /*!40000 ALTER TABLE `pages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,7 +212,7 @@ CREATE TABLE `usuario` (
   `tel` varchar(30) NOT NULL,
   `isPremium` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,6 +221,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'Brian','Brian123','brian@gmail.com','(44) 99921-9808',1);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -244,4 +242,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-20 15:49:51
+-- Dump completed on 2024-05-29 13:36:53
