@@ -5,7 +5,7 @@ import db from "../database/db.js";
     // const sqlUser= [];
 
 export const verificarcadastro = (req, res) => {
-    const { nomeCompleto, email, password, telefone, isPremium } = req.body;
+    const { nomeCompleto, email, password, telefone, isPremium} = req.body;
 
     db.query('SELECT * FROM usuario WHERE email = ?', [email], async (error, results) => {
         if (error) {
