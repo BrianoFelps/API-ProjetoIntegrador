@@ -6,6 +6,8 @@ import { getAllElements, getElementsWProperties, getCardElements, getElementsByI
 import { getElementsP, addElementP, updateElementP, deleteElementP } from '../controllers/ElmPropertiesController.js';
 import { getUsuarios, addUsuario, updateUsuario, deleteUsuario } from '../controllers/UsuarioController.js';
 import { getAllEmoji, getEmojiById } from '../controllers/EmojisController.js';
+import { addLogin, deleteLogin, getLogin, updateLogin, verificarlogin } from '../controllers/LoginController.js';
+import { verificarcadastro } from '../controllers/SignUpController.js';
 const router = express.Router();
 
 // Requisição feita ao tentar acessar a rota
@@ -47,5 +49,13 @@ router.get("/User", getUsuarios);
 router.post("/User", addUsuario);
 router.put("/User", updateUsuario);
 router.delete("/User", deleteUsuario);
+
+router.post("/Login", verificarlogin);
+router.post("/Login/Adicionar", addLogin);
+router.get("/Login", getLogin);
+router.put("/Login", updateLogin);
+router.delete("/Login", deleteLogin);
+
+router.post("/SignUp", verificarcadastro);
 
 export default router;
