@@ -5,16 +5,16 @@ dotenv.config();
 
 // Dinamismo da conexão ao bd
 export const db = mysql.createConnection({
-    // host: "localhost",
-    // port: 3306,
-    // user: "root",
-    // password: "admin",
-    // database: "ProjetoIntegradorWEB"
-    host: process.env.MYSQLHOST,
-    port: process.env.MYSQLPORT,
-    user: process.env.MYSQLUSER,
-    password: process.env.MYSQLPASSWORD,
-    database: process.env.MYSQLDATABASE
+    host: "localhost",
+    port: 3306,
+    user: "root",
+    password: "admin",
+    database: "ProjetoIntegradorWEB"
+    // host: process.env.MYSQLHOST,
+    // port: process.env.MYSQLPORT,
+    // user: process.env.MYSQLUSER,
+    // password: process.env.MYSQLPASSWORD,
+    // database: process.env.MYSQLDATABASE
 })
 
 db.then(() => {
