@@ -2,7 +2,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "npm http-server ./dist"
   },
   "dependencies": {
     "axios": "^1.6.8",
