@@ -17,14 +17,15 @@ export const db = mysql.createConnection({
     database: process.env.MYSQLDATABASE
 })
 
-db.then(() => {
-    console.log(`Conexão bem-sucedida ao banco de dados MySQL (${process.env.MYSQLDATABASE})`)
-    if(process.env.MYSQLHOST === 'localhost'){
-        console.log(`Usando servidor local`);
-        
+db.connect((err) => {
+    if (err) {
+        console.error(`Erro ao se conectar ao banco de dados (${process.env.MYSQLDATABASE}): ${err}`);
+    } else {
+        console.log(`Conexão bem-sucedida ao banco de dados MySQL (${process.env.MYSQLDATABASE})`);
+        if (process.env.MYSQLHOST === 'localhost') {
+            console.log(`Usando servidor local`);
+        }
     }
-}).catch(err =>{
-    console.log(`Erro ao se conectar ao banco de dados (${process.env.MYSQLDATABASE}): ${err}`)
 });
 
 export default db;
