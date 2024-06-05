@@ -8,6 +8,7 @@ import { getUsuarios, addUsuario, updateUsuario, deleteUsuario } from '../contro
 import { getAllEmoji, getEmojiById } from '../controllers/EmojisController.js';
 import { addLogin, deleteLogin, getLogin, updateLogin, verificarlogin } from '../controllers/LoginController.js';
 import { verificarcadastro } from '../controllers/SignUpController.js';
+import { addFavorite, deleteFavorite, getFavorite } from '../controllers/FavoriteController.js';
 const router = express.Router();
 
 // Requisição feita ao tentar acessar a rota
@@ -57,5 +58,9 @@ router.put("/Login", updateLogin);
 router.delete("/Login", deleteLogin);
 
 router.post("/SignUp", verificarcadastro);
+
+router.get("/Favorite/:userId", getFavorite);
+router.post("/Favorite", addFavorite);
+router.delete("/Favorite", deleteFavorite)
 
 export default router;

@@ -9,7 +9,7 @@ export const db = mysql.createConnection({
     port: 3306,
     user: "root",
     password: "admin",
-    database: "ProjetoIntegradorWEB"
+    database: "projetointegradorweb"
     // host: process.env.MYSQLHOST,
     // port: process.env.MYSQLPORT,
     // user: process.env.MYSQLUSER,
@@ -17,14 +17,23 @@ export const db = mysql.createConnection({
     // database: process.env.MYSQLDATABASE
 })
 
-db.then(() => {
-    console.log(`Conexão bem-sucedida ao banco de dados MySQL (${process.env.MYSQLDATABASE})`)
-    if(process.env.MYSQLHOST === 'localhost'){
-        console.log(`Usando servidor local`);
-        
+db.connect((err) => {
+    if(err){
+        console.log(`Erro de conexão ao banco de dados: ${err}`);
+        return;
     }
-}).catch(err =>{
-    console.log(`Erro ao se conectar ao banco de dados (${process.env.MYSQLDATABASE}): ${err}`)
-});
+
+    console.log(`Conexão bem-sucedida!`);
+})
+
+// db.then(() => {
+//     console.log(`Conexão bem-sucedida ao banco de dados MySQL (${process.env.MYSQLDATABASE})`)
+//     if(process.env.MYSQLHOST === 'localhost'){
+//         console.log(`Usando servidor local`);
+        
+//     }
+// }).catch(err =>{
+//     console.log(`Erro ao se conectar ao banco de dados (${process.env.MYSQLDATABASE}): ${err}`)
+// });
 
 export default db;
