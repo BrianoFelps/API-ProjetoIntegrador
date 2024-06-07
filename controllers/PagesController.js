@@ -19,6 +19,22 @@ export const getPages = (_, res) => {
     });
 }
 
+export const getPageswUserInfo = (_, res) => {
+    const sql = 'select p.id, p.name as pagina, p.id_usuario, u.nome as nome from pages p join usuario u on p.id_usuario = u.id where p.name = "Ponto de equilíbrio";';
+
+    db.query(sql, (err, data) => {
+        if(err){
+            console.log("Erro ao processar a requisição!")
+            // Status code, retorna uma coisa se der erro padronizando (tipo erro 404 do google)
+            return res.status(500).json(err);
+        } else {
+            console.log(`Dados dos usuários obtidos adequadamente!`);
+            return res.status(200).json(data);
+            // 500 expressa erro, já o 200, sucesso.
+        }
+    });
+}
+
 export const addPages = (req, res) => {
     const { id_elements, id_usuario, id_emojimenu, isFavorited } = req.body;
 
