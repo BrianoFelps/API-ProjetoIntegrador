@@ -2,19 +2,19 @@ import { db } from '../database/db.js';
 
 // Verificação
 export const verificarlogin = (req, res) => {
-    const { email, senha } = req.body;
+    const { email, password } = req.body;
     
 
     const sql = 'select * from usuario where email = ? and senha = ?';
 
-    db.query(sql, [email, senha], (err, data) => {
+    db.query(sql, [email, password], (err, data) => {
         if(err) {
             console.log("Erro ao processar a requisição", err);
             return res.status(500).json({ error: "Erro interno do servidor" });
         } else {
             if(data.length > 0) {
                 console.log("Login bem-sucedido");
-                return res.status(200).json(data);
+                return res.status(200).json({ id: data[0].id, nome: data[0].nome, email: data[0].email });
             } else {
                 console.log("Credenciais inválidas");
                 return res.status(401).json({ error: "Credenciais inválidas" });
