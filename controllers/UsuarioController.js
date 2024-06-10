@@ -1,4 +1,5 @@
 import { db } from '../database/db.js';
+import * as PagesModel from '../models/Pages.js'
 
 export const getUsuarios = (_, res) => {
     const sql = "select * from usuario";
@@ -19,7 +20,7 @@ export const getUsuarios = (_, res) => {
 export const addUsuario = (req, res) => {
     const sql = "insert into usuario (nome, senha, email, tel, isPremium) values (?, ?, ?, ?, ?)"
 
-    const { nome, senha, email, tel, isPremium} = req.body;
+    const { nome, senha, email, tel, isPremium } = req.body;
 
     isPremium = false;
 
@@ -67,4 +68,20 @@ export const deleteUsuario = (req, res) => {
             // 500 expressa erro, 200 sucesso.
         }
     });
+}
+
+export const getPagesBasedOnUserInfo = async (req, res) => {
+    const { id } = req.params;
+
+   try{
+    const pages = await PagesModel.getPagebyUserId(id);
+    if(!pages){
+        res.status(404).json({error: 'Pages não encontradas'});
+        return;
+    }
+    res.status(200).json(pages);
+   } catch (error) {
+        console.error("Erro ao obter as pages pelo userID:", error);
+        res.status(500).json({ error: 'Erro ao obter a pagina pelo userID'})
+   }
 }

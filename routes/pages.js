@@ -4,7 +4,7 @@ import { getPages, getPageswUserInfo, addPages, updatePages, deletePages } from 
 import { getAllEmojiMenus, addEmojiMenu, updateEmojiMenu, deleteEmojiMenu, getEmojiMenuById, getEmojiByMenuId, getEmojiByIdMenu } from '../controllers/EmojiMenuController.js';
 import { getAllElements, getElementsWProperties, getCardElements, getElementsById, getInputCardElements, getInputWIdeaElements, getFScards, addElement, updateElement, updateElementsWData, deleteElement } from '../controllers/ElementsController.js';
 import { getElementsP, addElementP, updateElementP, deleteElementP } from '../controllers/ElmPropertiesController.js';
-import { getUsuarios, addUsuario, updateUsuario, deleteUsuario } from '../controllers/UsuarioController.js';
+import { getUsuarios, getPagesBasedOnUserInfo, addUsuario, updateUsuario, deleteUsuario } from '../controllers/UsuarioController.js';
 import { getAllEmoji, getEmojiById } from '../controllers/EmojisController.js';
 import { addLogin, deleteLogin, getLogin, updateLogin, verificarlogin } from '../controllers/LoginController.js';
 import { verificarcadastro } from '../controllers/SignUpController.js';
@@ -47,6 +47,7 @@ router.put("/ElmP", updateElementP);
 router.delete("/ElmP", deleteElementP);
 
 router.get("/User", getUsuarios);
+router.get("/User/:id", getPagesBasedOnUserInfo);
 router.post("/User", addUsuario);
 router.put("/User", updateUsuario);
 router.delete("/User", deleteUsuario);
