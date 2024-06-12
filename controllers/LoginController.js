@@ -14,7 +14,7 @@ export const verificarlogin = (req, res) => {
         } else {
             if(data.length > 0) {
                 console.log("Login bem-sucedido");
-                return res.status(200).json({ id: data[0].id, nome: data[0].nome, email: data[0].email });
+                return res.status(200).json({ id: data[0].id, nome: data[0].nome, email: data[0].email, senha: data[0].senha });
             } else {
                 console.log("Credenciais inválidas");
                 return res.status(401).json({ error: "Credenciais inválidas" });
