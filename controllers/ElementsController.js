@@ -147,15 +147,15 @@ export const getInputWIdeaElements = async (_, res) => {
     try{
         const Elements = await ElementsModel.getInputWIdeaElements();
         if(!Elements){
-            res.status(404).json({ error: `Erro ao obter os elementos Tooltip`});
+            res.status(404).json({ error: `Erro ao obter os elementos WriteIdea`});
             return;
         }
 
         res.status(200).json(Elements);
 
         } catch (error) {
-            console.error('Erro ao obter os Inputs com card:', error);
-            res.status(500).json({ error: 'Erro ao obter os Inputs com card' });
+            console.error('Erro ao obter os WriteIdea:', error);
+            res.status(500).json({ error: 'Erro ao obter os WriteIdea' });
         }
 }
 

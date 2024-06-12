@@ -47,7 +47,7 @@ export const getElementsWProperties = async () => {
 
 export const getCardElements = async () => {
   return new Promise((resolve, reject) => {
-    const sql = 'SELECT * FROM elements where id >= 4';
+    const sql = 'SELECT * FROM elements where id_property = 4';
     db.query(sql, (error, results) => {
       if (error) {
         reject(error);
@@ -60,7 +60,7 @@ export const getCardElements = async () => {
 
 export const getInputCardElements = async () =>{
   return new Promise((resolve, reject) => {
-    const sql = 'SELECT * FROM elements where id >= 9';
+    const sql = 'SELECT * FROM elements where id_property = 5';
     db.query(sql, (error, results) => {
       if (error) {
         reject(error);
@@ -73,7 +73,7 @@ export const getInputCardElements = async () =>{
 
 export const getInputWIdeaElements = async () =>{
   return new Promise((resolve, reject) => {
-    const sql = 'SELECT * FROM elements where id >= 18';
+    const sql = 'SELECT * FROM elements where id_property = 6';
     db.query(sql, (error, results) => {
       if (error) {
         reject(error);
@@ -86,7 +86,7 @@ export const getInputWIdeaElements = async () =>{
 
 export const getFScards = async () =>{
   return new Promise((resolve, reject) => {
-    const sql = `SELECT id, id_property, value, DATE_FORMAT(data, '%Y-%m-%d') as data FROM elements where id >= 21`;
+    const sql = `SELECT id, id_property, value, DATE_FORMAT(data, '%Y-%m-%d') as data FROM elements where id_property = 7`;
     db.query(sql, (error, results) => {
       if (error) {
         reject(error);
