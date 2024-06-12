@@ -34,7 +34,7 @@ export const getElementsById = (id) => {
 
 export const getElementsWProperties = async () => {
   return new Promise((resolve, reject) => {
-    const sql = 'SELECT e.id as id, ep.id as property_id, ep.name as category, ep.type as ancestry, e.value as value FROM elements e JOIN elmproperties ep ON e.id_property = ep.id order by e.id';
+    const sql = 'SELECT e.id as id, ep.id as property_id, ep.name as category, ep.type as ancestry, e.value as value, e.user_id as user_id FROM elements e JOIN elmproperties ep ON e.id_property = ep.id order by e.id';
     db.query(sql, (error, results) => {
       if (error) {
         reject(error);

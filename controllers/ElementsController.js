@@ -29,11 +29,11 @@ export const addElement = (req, res) => {
 }
 
 export const updateElement = (req, res) => {
-    const sql = "UPDATE elements SET id_property = ?, value = ? WHERE id = ?";
+    const sql = "UPDATE elements SET value = ? WHERE id_property = ? and user_id = ?";
 
-    const { id_property, value, id } = req.body;
+    const { value, id_property, user_id } = req.body;
     
-    db.query(sql, [id_property, value, id], (err, data) => {
+    db.query(sql, [value, id_property, user_id], (err, data) => {
         if(err){
             console.log("Erro ao processar a requisição!");
             return res.status(500).json(err);
