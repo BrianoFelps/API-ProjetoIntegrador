@@ -12,12 +12,12 @@ export const getAllElements = async (_, res) => {
       }
     };
 
-export const addElement = (req, res) => {
-    const sql = "insert into elements (id_property, value) values (?, ?)"
+export const addElementWuser = (req, res) => {
+    const sql = "insert into elements ( id_property, value, user_id, page_id ) values ( ?, ?, ?, ? )";
 
-    const { id_property, value } = req.body;
+    const { id_property, value, user_id, page_id } = req.body;
 
-    db.query(sql, [id_property, value], (err, data) => {
+    db.query(sql, [id_property, value, user_id, page_id], (err, data) =>{
         if(err){
             console.log("Erro ao processar a requisição!")
             return res.status(500).json(err);
@@ -33,14 +33,17 @@ export const updateElement = (req, res) => {
 
     const { value, id_property, user_id } = req.body;
     
-    db.query(sql, [value, id_property, user_id], (err, data) => {
-        if(err){
+    db.query(sql, [value, id_property, user_id], (err, result) => {
+        if (err) {
             console.log("Erro ao processar a requisição!");
             return res.status(500).json(err);
+        } else if (result.affectedRows === 0) {
+            console.log("Elemento não encontrado para atualização!");
+            return res.status(404).json({ error: "Elemento não encontrado" });
         } else {
-            console.log(`Element alterado com sucesso!`)
-            return res.status(200).json(data);
-            }
+            console.log(`Elemento alterado com sucesso!`);
+            return res.status(200).json(result);
+        }
     });
 }
 
