@@ -15,11 +15,11 @@ export const getAllEmojiMenus = async (_, res) => {
     };
 
 export const addEmojiMenu = (req, res) => {
-    const sql = "insert into emojimenu (id_emoji) values (?)"
+    const sql = "insert into emojimenu (id_emoji, page_id, user_id) values (?, ?, ?)"
 
-    const { id_emoji } = req.body;
+    const { id_emoji, page_id, user_id } = req.body;
 
-    db.query(sql, [id_emoji], (err, data) => {
+    db.query(sql, [id_emoji, page_id, user_id], (err, data) => {
         if(err){
             console.log("Erro ao processar a requisição!")
             return res.status(500).json(err);

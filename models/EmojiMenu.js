@@ -34,7 +34,7 @@ export const getEmojiMenuById = (id) => {
 
 export const getEmojiByMenuId = async () => {
   return new Promise((resolve, reject) => {
-    const sql = 'SELECT em.id as id, e.emoji as emoji FROM emojimenu em JOIN emojis e ON em.id_emoji = e.id order by em.id';
+    const sql = 'SELECT em.id as id, e.emoji as emoji, em.user_id as user_id FROM emojimenu em JOIN emojis e ON em.id_emoji = e.id order by em.id';
     db.query(sql, (error, results) => {
       if (error) {
         reject(error);
@@ -47,7 +47,7 @@ export const getEmojiByMenuId = async () => {
 
 export const getEmojiByIdMenu = (id) => {
   return new Promise((resolve, reject) => {
-    const sql = 'SELECT em.id as id, e.emoji as emoji FROM emojimenu em JOIN emojis e ON em.id_emoji = e.id WHERE em.id = ?';
+    const sql = 'SELECT em.id as id, e.emoji as emoji, em.user_id as user_id FROM emojimenu em JOIN emojis e ON em.id_emoji = e.id WHERE em.id = ?';
     db.query(sql, [id], (error, results) => {
       if (error) {
         reject(error);
