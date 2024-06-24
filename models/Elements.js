@@ -86,7 +86,7 @@ export const getInputWIdeaElements = async () =>{
 
 export const getFScards = async () =>{
   return new Promise((resolve, reject) => {
-    const sql = `SELECT id, id_property, value, DATE_FORMAT(data, '%Y-%m-%d') as data FROM elements where id_property = 7`;
+    const sql = `SELECT id, id_property, value, DATE_FORMAT(data, '%Y-%m-%d') as data, user_id FROM elements where id_property = 7`;
     db.query(sql, (error, results) => {
       if (error) {
         reject(error);
