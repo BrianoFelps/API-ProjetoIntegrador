@@ -7,6 +7,7 @@ import * as EmojiMenuModel from '../models/EmojiMenu.js';
 export const getAllEmojiMenus = async (_, res) => {
     try {
         const emojiMenus = await EmojiMenuModel.getAllEmojiMenus();
+        console.log('Emoji menus:', emojiMenus)
         res.status(200).json(emojiMenus);
       } catch (error) {
         console.error('Erro ao obter todos os EmojiMenus:', error);
