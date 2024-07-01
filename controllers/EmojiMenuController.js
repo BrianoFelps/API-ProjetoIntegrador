@@ -20,7 +20,13 @@ export const addEmojiMenu = (req, res) => {
 
     const { id_emoji, page_id, user_id } = req.body;
 
-    console.log('Requisição recebida para adicionar EmojiMenu:', req.body); // Log de entrada
+    console.log(`Recebendo dados: id_emoji=${id_emoji}, page_id=${page_id}, user_id=${user_id}`);
+    
+    if (!id_emoji || !page_id || !user_id) {
+        console.log("Erro: Campos incompletos");
+        return res.status(400).json({ error: "Campos incompletos" });
+    }
+
 
     db.query(sql, [id_emoji, page_id, user_id], (err, data) => {
         if(err){
