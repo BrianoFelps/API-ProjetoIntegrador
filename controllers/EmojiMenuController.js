@@ -20,6 +20,8 @@ export const addEmojiMenu = (req, res) => {
 
     const { id_emoji, page_id, user_id } = req.body;
 
+    console.log('Requisição recebida para adicionar EmojiMenu:', req.body); // Log de entrada
+
     db.query(sql, [id_emoji, page_id, user_id], (err, data) => {
         if(err){
             console.log("Erro ao processar a requisição!")
