@@ -18,7 +18,7 @@ export const getUsuarios = (_, res) => {
 }
 
 export const addUsuario = (req, res) => {
-    const sql = "insert into usuario (nome, senha, email, tel, isPremium) values (?, ?, ?, ?, ?)"
+    const sql = "insert into usuario (nome, senha, email, tel, isPremium, ) values (?, ?, ?, ?, ?)"
 
     const { nome, senha, email, tel, isPremium } = req.body;
 

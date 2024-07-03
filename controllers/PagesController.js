@@ -35,35 +35,35 @@ export const getPageswUserInfo = (_, res) => {
     });
 }
 
-export const addPages = (req, res) => {
-    const { id_elements, id_usuario, id_emojimenu, isFavorited } = req.body;
+// export const addPages = (req, res) => {
+//     const { id_elements, id_usuario, id_emojimenu, isFavorited } = req.body;
 
-    const checkIDsQuery = "SELECT * FROM elements WHERE id_elements = ?; SELECT * FROM usuarios WHERE id_usuario = ?; SELECT * FROM emojiMenu WHERE id_emojimenu = ?";
+//     const checkIDsQuery = "SELECT * FROM elements WHERE id_elements = ?; SELECT * FROM usuarios WHERE id_usuario = ?; SELECT * FROM emojiMenu WHERE id_emojimenu = ?";
 
-    db.query(checkIDsQuery, [id_elements, id_usuario, id_emojimenu], (err, results) => {
-        if(err){
-            console.log("Erro ao processar a requisição!");
-            return res.status(500).json(err);
-        } else {
-            // Verificar se todos os IDs são válidos
-            if (results[0].length === 0 || results[1].length === 0 || results[2].length === 0) {
-                return res.status(400).json({ error: "IDs fornecidos são inválidos." });
-            }
+//     db.query(checkIDsQuery, [id_elements, id_usuario, id_emojimenu], (err, results) => {
+//         if(err){
+//             console.log("Erro ao processar a requisição!");
+//             return res.status(500).json(err);
+//         } else {
+//             // Verificar se todos os IDs são válidos
+//             if (results[0].length === 0 || results[1].length === 0 || results[2].length === 0) {
+//                 return res.status(400).json({ error: "IDs fornecidos são inválidos." });
+//             }
 
-            // Se os IDs são válidos, prosseguir com a inserção na tabela pages
-            const insertQuery = "INSERT INTO pages (id_elements, id_usuario, id_emojimenu, isFavorited) VALUES (?, ?, ?, ?)";
-            db.query(insertQuery, [id_elements, id_usuario, id_emojimenu, isFavorited], (err, data) => {
-                if(err){
-                    console.log("Erro ao processar a requisição!");
-                    return res.status(500).json(err);
-                } else {
-                    console.log(`Página cadastrada adequadamente!`);
-                    return res.status(200).json(data);
-                }
-            });
-        }
-    });
-}
+//             // Se os IDs são válidos, prosseguir com a inserção na tabela pages
+//             const insertQuery = "INSERT INTO pages (id_elements, id_usuario, id_emojimenu, isFavorited) VALUES (?, ?, ?, ?)";
+//             db.query(insertQuery, [id_elements, id_usuario, id_emojimenu, isFavorited], (err, data) => {
+//                 if(err){
+//                     console.log("Erro ao processar a requisição!");
+//                     return res.status(500).json(err);
+//                 } else {
+//                     console.log(`Página cadastrada adequadamente!`);
+//                     return res.status(200).json(data);
+//                 }
+//             });
+//         }
+//     });
+// }
 
 export const updatePages = (req, res) => {
     const sql = "UPDATE pages SET isFavorited = ? WHERE id = ?";

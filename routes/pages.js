@@ -1,6 +1,6 @@
 // Definir rotas
 import express from 'express';
-import { getPages, getPageswUserInfo, addPages, updatePages, deletePages } from '../controllers/PagesController.js';
+import { getPages, getPageswUserInfo,/* addPages,*/ updatePages, deletePages } from '../controllers/PagesController.js';
 import { getAllEmojiMenus, addEmojiMenu, updateEmojiMenu, deleteEmojiMenu, getEmojiMenuById, getEmojiByMenuId, getEmojiByIdMenu } from '../controllers/EmojiMenuController.js';
 import { getAllElements, getElementsWProperties, getCardElements, getElementsById, getInputCardElements, getInputWIdeaElements, getFScards, addElementWuser, updateElement, updateElementsWData, deleteElement } from '../controllers/ElementsController.js';
 import { getElementsP, addElementP, updateElementP, deleteElementP } from '../controllers/ElmPropertiesController.js';
@@ -14,7 +14,7 @@ const router = express.Router();
 // router.get("/", () => {console.log("Rota de usuários acionada.")});
 router.get("/", getPages);
 router.get("/usr", getPageswUserInfo);
-router.post("/", addPages);
+// router.post("/", addPages);
 router.put("/", updatePages);
 router.delete("/", deletePages);
 
