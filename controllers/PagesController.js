@@ -20,7 +20,7 @@ export const getPages = (_, res) => {
 }
 
 export const getPageswUserInfo = (_, res) => {
-    const sql = 'select p.id, p.name as pagina, p.id_usuario, u.nome as nome from pages p join usuario u on p.id_usuario = u.id where p.name = "Ponto de equilíbrio";';
+    const sql = 'select p.id, p.name as pagina, p.id_usuario, u.nome_inteiro as nome from pages p join usuario u on p.id_usuario = u.id where p.name = "Ponto de equilíbrio";';
 
     db.query(sql, (err, data) => {
         if(err){
